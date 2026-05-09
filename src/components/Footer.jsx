@@ -20,8 +20,8 @@ export default function Footer() {
           style={{ display: 'flex', gap: 12 }}>
           {[
             { icon: <Mail size={15} />, href: 'mailto:pirapanchanraghavan@gmail.com' },
-            { icon: <GitFork size={15} />, href: 'https://github.com/RaghavanPirapanchan' },
-            { icon: <Link2 size={15} />, href: 'https://www.linkedin.com/in/raghavan-pirapanchan' },
+            { icon: <GitFork size={15} />, href: 'https://github.com/RPirapanchan' },
+            { icon: <Link2 size={15} />, href: 'https://www.linkedin.com/in/pirapanchan-raghavan-451ab4246' },
           ].map((s, i) => (
             <motion.a key={i} href={s.href} target="_blank" rel="noopener noreferrer"
               whileHover={{ scale: 1.15, y: -3 }} className="social-icon">

@@ -4,8 +4,8 @@ import { Mail, GitFork, Link2, Phone, Send, ArrowRight, CheckCircle } from 'luci
 
 const contactLinks = [
   { icon: <Mail size={20} />, label: 'Email', value: 'pirapanchanraghavan@gmail.com', href: 'mailto:pirapanchanraghavan@gmail.com' },
-  { icon: <GitFork size={20} />, label: 'GitHub', value: 'RaghavanPirapanchan', href: 'https://github.com/RaghavanPirapanchan' },
-  { icon: <Link2 size={20} />, label: 'LinkedIn', value: 'Raghavan Pirapanchan', href: 'https://www.linkedin.com/in/raghavan-pirapanchan' },
+  { icon: <GitFork size={20} />, label: 'GitHub', value: 'RPirapanchan', href: 'https://github.com/RPirapanchan' },
+  { icon: <Link2 size={20} />, label: 'LinkedIn', value: 'pirapanchan-raghavan', href: 'https://www.linkedin.com/in/pirapanchan-raghavan-451ab4246' },
   { icon: <Phone size={20} />, label: 'Phone', value: '+94 76 375 3815', href: 'tel:+94763753815' },
 ];
 
