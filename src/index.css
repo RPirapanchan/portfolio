@@ -256,7 +256,15 @@ body {
   .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
 
   /* Contact grid gap */
-  .contact-grid > div:last-child .card-light { padding: 24px !important; }
+  .contact-grid { gap: 28px !important; }
+  .contact-grid > div:last-child { padding: 22px !important; }
+
+  /* Contact row — allow email to wrap on narrow */
+  .contact-row { flex-wrap: nowrap; overflow: hidden; }
+  .contact-row p:last-child { font-size: 0.80rem !important; }
+
+  /* Section header margin-bottom */
+  .contact-grid ~ * { margin-bottom: 0; }
 }
 
 /* ══ Small Mobile ≤ 480px ════════════════════════ */
