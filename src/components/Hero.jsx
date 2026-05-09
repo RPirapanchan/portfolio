@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 /* ── Floating particles ─────────────────────────── */
@@ -16,7 +16,6 @@ const particles = Array.from({ length: 45 }, (_, i) => ({
 
 export default function Hero() {
   const ref = useRef(null);
-  const [imgError, setImgError] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const opacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
@@ -41,8 +40,6 @@ export default function Hero() {
         className="orb orb-burgundy" style={{ width: 580, height: 580, top: '5%', left: '-5%' }} />
       <motion.div animate={{ scale: [1.2, 1, 1.2], opacity: [0.12, 0.25, 0.12] }} transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         className="orb orb-maroon" style={{ width: 460, height: 460, bottom: '-5%', right: '-2%' }} />
-      <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.07, 0.15, 0.07] }} transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
-        className="orb orb-burgundy" style={{ width: 300, height: 300, top: '30%', right: '20%' }} />
 
       {/* ── Particles ── */}
       {particles.map((p) => (
@@ -58,7 +55,7 @@ export default function Hero() {
         />
       ))}
 
-      {/* ── Diagonal lines ── */}
+      {/* ── Diagonal SVG lines ── */}
       <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', opacity: 0.055 }}>
         <defs>
           <pattern id="diag" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
@@ -68,42 +65,42 @@ export default function Hero() {
         <rect width="100%" height="100%" fill="url(#diag)" />
       </svg>
 
-      {/* ── Floating info cards ── */}
+      {/* ── Floating info cards (wide screens) ── */}
       <motion.div animate={{ y: [-8, 8, -8], rotate: [-1, 1, -1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="floating-card" style={{ position: 'absolute', top: '12%', right: '5%', display: 'none' }} id="fc1">
-        <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Internship</p>
-        <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>AI Engineer Intern</p>
-        <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Techorin · 2025</p>
-      </motion.div>
-
-      <motion.div animate={{ y: [8, -8, 8], rotate: [1, -1, 1] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="floating-card" style={{ position: 'absolute', bottom: '14%', left: '5%', display: 'none' }} id="fc2">
+        className="floating-card" style={{ position: 'absolute', top: '12%', left: '5%', display: 'none' }} id="fc2">
         <p className="eyebrow-dark" style={{ marginBottom: 6 }}>University</p>
         <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>Moratuwa, Sri Lanka</p>
         <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>BSc Hons in AI · 2026</p>
       </motion.div>
 
-      {/* ══════════════════════════════════════════════
-          MAIN CONTENT — split: text left | photo right
-      ══════════════════════════════════════════════ */}
-      <motion.div
-        style={{ y, opacity, position: 'relative', zIndex: 10, width: '100%', maxWidth: 1180, padding: '0 40px' }}
-      >
-        <div className="hero-split">
+      <motion.div animate={{ y: [8, -8, 8], rotate: [1, -1, 1] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+        className="floating-card" style={{ position: 'absolute', bottom: '14%', left: '5%', display: 'none' }} id="fc1">
+        <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Internship</p>
+        <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>AI Engineer Intern</p>
+        <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Techorin · 2025</p>
+      </motion.div>
 
-          {/* ── LEFT: Text ── */}
-          <div style={{ flex: 1, minWidth: 0 }}>
+      {/* ══════════════════════════════════════
+          CENTERED TEXT + RIGHT PHOTO LAYOUT
+      ══════════════════════════════════════ */}
+      <motion.div style={{ y, opacity, position: 'relative', zIndex: 10, width: '100%', maxWidth: 1200, padding: '0 40px' }}>
+        <div className="hero-layout">
+
+          {/* ── CENTER: Text (full width feel, slightly left of photo) ── */}
+          <div style={{ flex: 1, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
             {/* Eyebrow */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-              style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-              <span style={{ height: 1, width: 36, background: 'linear-gradient(90deg, transparent, rgba(232,180,184,0.7))' }} />
+              style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
+              <span style={{ height: 1, width: 44, background: 'linear-gradient(90deg, transparent, rgba(232,180,184,0.7))' }} />
               <span className="eyebrow-dark">AI Engineer &amp; Researcher</span>
+              <span style={{ height: 1, width: 44, background: 'linear-gradient(90deg, rgba(232,180,184,0.7), transparent)' }} />
             </motion.div>
 
             {/* Name */}
             <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }}
               className="font-serif gradient-text-main"
-              style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em', marginBottom: 10 }}>
+              style={{ fontSize: 'clamp(3rem, 7vw, 6.5rem)', fontWeight: 700, lineHeight: 1.04, letterSpacing: '-0.02em', marginBottom: 12 }}>
               Raghavan
               <br />
               <span className="gradient-text-accent">Pirapanchan</span>
@@ -111,7 +108,7 @@ export default function Hero() {
 
             {/* Tagline */}
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
-              style={{ maxWidth: 480, fontSize: '0.97rem', fontWeight: 300, color: 'rgba(245,241,237,0.55)', lineHeight: 1.82, marginBottom: 36 }}>
+              style={{ maxWidth: 520, fontSize: '1rem', fontWeight: 300, color: 'rgba(245,241,237,0.55)', lineHeight: 1.82, marginBottom: 36 }}>
               Crafting intelligent systems at the intersection of{' '}
               <span style={{ color: '#e8b4b8' }}>Computer Vision</span>,{' '}
               <span style={{ color: '#e8b4b8' }}>Deep Learning</span>, and{' '}
@@ -120,63 +117,53 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9 }}
-              style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
+              style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
               <a href="#projects" className="btn-primary">View Projects</a>
               <a href="#contact" className="btn-secondary">Contact Me</a>
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Photo ── */}
-          <motion.div initial={{ opacity: 0, scale: 0.88, x: 40 }} animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
-            style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          {/* ── RIGHT: Circular Photo ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, x: 30 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.55, ease: 'easeOut' }}
+            style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
           >
-            {/* Outer glow ring */}
-            <div style={{ position: 'relative' }}>
-              {/* Animated ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-                style={{
-                  position: 'absolute', inset: -6, borderRadius: '50%',
-                  background: 'conic-gradient(from 0deg, rgba(91,0,23,0.0) 0%, rgba(232,180,184,0.6) 30%, rgba(91,0,23,0.8) 60%, rgba(232,180,184,0.6) 80%, rgba(91,0,23,0.0) 100%)',
-                }}
-              />
-              {/* Glow shadow */}
-              <div style={{
-                position: 'absolute', inset: 0, borderRadius: '50%',
-                boxShadow: '0 0 60px 20px rgba(91,0,23,0.45), 0 0 120px 40px rgba(91,0,23,0.20)',
-              }} />
-
-              {/* Photo frame */}
-              <div style={{
-                width: 300, height: 300,
+            {/* Rotating ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              style={{
+                position: 'absolute',
+                width: 310, height: 310,
                 borderRadius: '50%',
-                overflow: 'hidden',
-                border: '3px solid rgba(232,180,184,0.35)',
-                position: 'relative',
-                background: 'linear-gradient(135deg, #1c0009, #0a0005)',
-              }}>
-                {!imgError ? (
-                  <img
-                    src="/profile.jpg"
-                    alt="Raghavan Pirapanchan"
-                    onError={() => setImgError(true)}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-                  />
-                ) : (
-                  /* Placeholder until photo is uploaded */
-                  <div style={{
-                    width: '100%', height: '100%',
-                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                    background: 'linear-gradient(135deg, #1c0009, #2a000f)',
-                    gap: 10,
-                  }}>
-                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '3.5rem', fontWeight: 700, color: '#e8b4b8', letterSpacing: '0.05em' }}>RP</span>
-                    <span style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: 'rgba(232,180,184,0.45)', textTransform: 'uppercase' }}>Upload photo</span>
-                  </div>
-                )}
-              </div>
+                background: 'conic-gradient(from 0deg, rgba(91,0,23,0.0) 0%, rgba(232,180,184,0.65) 35%, rgba(91,0,23,0.8) 65%, rgba(232,180,184,0.65) 85%, rgba(91,0,23,0.0) 100%)',
+                padding: 2,
+              }}
+            />
+            {/* Glow */}
+            <div style={{
+              position: 'absolute',
+              width: 300, height: 300,
+              borderRadius: '50%',
+              boxShadow: '0 0 55px 18px rgba(91,0,23,0.50), 0 0 110px 35px rgba(91,0,23,0.22)',
+            }} />
+            {/* Photo circle */}
+            <div style={{
+              width: 300, height: 300,
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: '3px solid rgba(232,180,184,0.30)',
+              position: 'relative',
+              background: 'linear-gradient(135deg, #1c0009, #0a0005)',
+              zIndex: 1,
+            }}>
+              <img
+                src="/profile.jpeg"
+                alt="Raghavan Pirapanchan"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+              />
             </div>
           </motion.div>
 
@@ -184,18 +171,17 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
-        .hero-split {
+        .hero-layout {
           display: flex;
           align-items: center;
-          gap: 80px;
+          gap: 72px;
         }
-        @media (max-width: 900px) {
-          .hero-split {
-            flex-direction: column;
-            gap: 40px;
-            text-align: center;
+        @media (max-width: 860px) {
+          .hero-layout {
+            flex-direction: column-reverse;
+            gap: 32px;
           }
-          .hero-split > div:first-child { align-items: center; display: flex; flex-direction: column; }
+          .hero-layout > div:first-child { align-items: center !important; }
         }
         @media (min-width: 1200px) { #fc1, #fc2 { display: block !important; } }
       `}</style>
