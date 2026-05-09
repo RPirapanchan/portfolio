@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar, GraduationCap } from 'lucide-react';
 
 const experiences = [
   {
@@ -73,7 +73,7 @@ export default function Experience() {
           <div>
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
               style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
-              <span>🎓</span>
+              <GraduationCap size={15} style={{ color: 'rgba(91,0,23,0.60)' }} />
               <span style={{ fontSize: '0.68rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(91,0,23,0.60)', fontWeight: 600 }}>Education</span>
             </motion.div>
 

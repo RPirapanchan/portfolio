@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Brain, MessageSquare, BarChart2, Activity, PenLine, Leaf } from 'lucide-react';
 
 const projects = [
-  { id: 1, title: 'Explainable Fuzzy Vision Transformer', subtitle: 'Temporal Ergonomic Risk Prediction', year: '2026 · Ongoing', type: 'Final Year Research', description: 'AI-based ergonomic risk assessment framework using Computer Vision, Temporal Vision Transformers, and Explainable AI. End-to-end pipeline for pose extraction, REBA-based risk labelling, and temporal sequence modelling from workplace video data.', tags: ['Python', 'TensorFlow', 'MediaPipe', 'OpenCV', 'Scikit-Fuzzy', 'Streamlit'], emoji: '🧠' },
-  { id: 2, title: 'ChatMate', subtitle: 'AI-Powered Educational Chatbot', year: '2025 · Ongoing', type: 'Individual Project', description: 'Full-stack AI chatbot for enhanced education. Built with MERN stack, with authentication and LangChain-based RAG model for contextual, accurate responses.', tags: ['React', 'Node.js', 'MongoDB', 'LangChain', 'RAG', 'OpenAI'], emoji: '💬' },
-  { id: 3, title: 'Financial Forecasting Tool', subtitle: 'Time Series Budget Management', year: '2023 – 2024', type: '2nd Year Project · Zone24x7', description: 'Financial management tool for budget planning based on cash and bank transactions. Uses time series models for future financial predictions.', tags: ['React Native', 'NativeBase', 'MongoDB', 'FastAPI', 'Time Series'], emoji: '📊' },
-  { id: 4, title: 'Ergonomic Posture Scorer', subtitle: 'Computer Vision Assessment Tool', year: '2025', type: 'Individual Project', description: 'Ergonomic assessment tool to analyze weightlifter posture. Evaluates joint strain and classifies posture on a scale of 1–9 using computer vision and deep learning.', tags: ['OpenCV', 'MediaPipe Pose', 'YOLOv5', 'PyTorch', 'NumPy'], emoji: '🏋️' },
-  { id: 5, title: 'Shakespeare LSTM Generator', subtitle: 'Neural Text Generation Model', year: '2024', type: 'Individual Project', description: 'LSTM-based text generation model producing Shakespearean text by predicting the next character in a sequence to emulate his poetic structure.', tags: ['Python', 'TensorFlow', 'LSTM Neural Networks'], emoji: '✍️' },
-  { id: 6, title: 'Carbon Footprint Expert System', subtitle: 'Rule-Based Environmental Advisor', year: '2024', type: 'Individual Project', description: 'Web-based expert system assessing carbon footprints across Energy, Transportation, and Waste Management with rule-based recommendations.', tags: ['Python', 'Streamlit', 'Experta'], emoji: '🌱' },
+  { id: 1, title: 'Explainable Fuzzy Vision Transformer', subtitle: 'Temporal Ergonomic Risk Prediction', year: '2026 · Ongoing', type: 'Final Year Research', description: 'AI-based ergonomic risk assessment framework using Computer Vision, Temporal Vision Transformers, and Explainable AI. End-to-end pipeline for pose extraction, REBA-based risk labelling, and temporal sequence modelling from workplace video data.', tags: ['Python', 'TensorFlow', 'MediaPipe', 'OpenCV', 'Scikit-Fuzzy', 'Streamlit'], icon: Brain },
+  { id: 2, title: 'ChatMate', subtitle: 'AI-Powered Educational Chatbot', year: '2025 · Ongoing', type: 'Individual Project', description: 'Full-stack AI chatbot for enhanced education. Built with MERN stack, with authentication and LangChain-based RAG model for contextual, accurate responses.', tags: ['React', 'Node.js', 'MongoDB', 'LangChain', 'RAG', 'OpenAI'], icon: MessageSquare },
+  { id: 3, title: 'Financial Forecasting Tool', subtitle: 'Time Series Budget Management', year: '2023 – 2024', type: '2nd Year Project · Zone24x7', description: 'Financial management tool for budget planning based on cash and bank transactions. Uses time series models for future financial predictions.', tags: ['React Native', 'NativeBase', 'MongoDB', 'FastAPI', 'Time Series'], icon: BarChart2 },
+  { id: 4, title: 'Ergonomic Posture Scorer', subtitle: 'Computer Vision Assessment Tool', year: '2025', type: 'Individual Project', description: 'Ergonomic assessment tool to analyze weightlifter posture. Evaluates joint strain and classifies posture on a scale of 1–9 using computer vision and deep learning.', tags: ['OpenCV', 'MediaPipe Pose', 'YOLOv5', 'PyTorch', 'NumPy'], icon: Activity },
+  { id: 5, title: 'Shakespeare LSTM Generator', subtitle: 'Neural Text Generation Model', year: '2024', type: 'Individual Project', description: 'LSTM-based text generation model producing Shakespearean text by predicting the next character in a sequence to emulate his poetic structure.', tags: ['Python', 'TensorFlow', 'LSTM Neural Networks'], icon: PenLine },
+  { id: 6, title: 'Carbon Footprint Expert System', subtitle: 'Rule-Based Environmental Advisor', year: '2024', type: 'Individual Project', description: 'Web-based expert system assessing carbon footprints across Energy, Transportation, and Waste Management with rule-based recommendations.', tags: ['Python', 'Streamlit', 'Experta'], icon: Leaf },
 ];
 
 const variants = {
@@ -47,7 +47,9 @@ export default function Projects() {
               {/* Left */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 22 }}>
-                  <span style={{ fontSize: '2.6rem' }}>{projects[current].emoji}</span>
+                  <div style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(91,0,23,0.08)', border: '1px solid rgba(91,0,23,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#5B0017', flexShrink: 0 }}>
+                    {React.createElement(projects[current].icon, { size: 22 })}
+                  </div>
                   <span className="chip-light">{projects[current].type}</span>
                 </div>
                 <h3 className="font-serif" style={{ fontSize: '1.8rem', fontWeight: 700, color: '#1a0008', marginBottom: 8, lineHeight: 1.2 }}>{projects[current].title}</h3>
@@ -61,12 +63,12 @@ export default function Projects() {
               {/* Right visual */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <motion.div animate={{ rotate: [0, 2, -2, 0], scale: [1, 1.02, 1] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ width: 210, height: 210, borderRadius: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem',
+                  style={{ width: 210, height: 210, borderRadius: 28, display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: 'linear-gradient(135deg, #F5F1ED, #E7DDD6)',
                     border: '1.5px solid rgba(91,0,23,0.20)',
-                    boxShadow: '0 20px 60px rgba(91,0,23,0.14)',
+                    boxShadow: '0 20px 60px rgba(91,0,23,0.14)', color: '#5B0017',
                   }}>
-                  {projects[current].emoji}
+                  {React.createElement(projects[current].icon, { size: 72, strokeWidth: 1.2 })}
                 </motion.div>
               </div>
             </motion.div>
@@ -101,7 +103,9 @@ export default function Projects() {
               onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); window.scrollTo({ top: document.getElementById('projects').offsetTop - 100, behavior: 'smooth' }); }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12 }}>
-                <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>{proj.emoji}</span>
+                <div style={{ width: 32, height: 32, borderRadius: 10, background: 'rgba(91,0,23,0.08)', border: '1px solid rgba(91,0,23,0.16)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#5B0017', flexShrink: 0 }}>
+                  {React.createElement(proj.icon, { size: 16 })}
+                </div>
                 <div style={{ minWidth: 0 }}>
                   <p className="font-serif" style={{ fontWeight: 600, fontSize: '0.84rem', color: '#1a0008', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{proj.title}</p>
                   <p style={{ fontSize: '0.70rem', color: 'rgba(91,0,23,0.60)', marginTop: 3 }}>{proj.year}</p>

@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Monitor, Brain, Globe, Settings, Database, Wrench } from 'lucide-react';
 
 const skillGroups = [
-  { category: 'Programming Languages', emoji: '💻', skills: ['Python', 'Java', 'C', 'JavaScript'] },
-  { category: 'AI & ML Libraries', emoji: '🧠', skills: ['TensorFlow', 'PyTorch', 'Scikit-Learn', 'NumPy', 'Pandas', 'Matplotlib', 'OpenCV', 'MediaPipe'] },
-  { category: 'Web Development', emoji: '🌐', skills: ['React', 'React Native', 'HTML', 'CSS', 'JavaScript'] },
-  { category: 'Backend & APIs', emoji: '⚙️', skills: ['FastAPI', 'Node.js', 'Express.js'] },
-  { category: 'Databases', emoji: '🗄️', skills: ['MySQL', 'MongoDB'] },
-  { category: 'Tools & DevOps', emoji: '🛠️', skills: ['Git', 'Streamlit', 'NativeBase', 'LangChain', 'RAG'] },
+  { category: 'Programming Languages', icon: <Monitor size={16} />, skills: ['Python', 'Java', 'C', 'JavaScript'] },
+  { category: 'AI & ML Libraries', icon: <Brain size={16} />, skills: ['TensorFlow', 'PyTorch', 'Scikit-Learn', 'NumPy', 'Pandas', 'Matplotlib', 'OpenCV', 'MediaPipe'] },
+  { category: 'Web Development', icon: <Globe size={16} />, skills: ['React', 'React Native', 'HTML', 'CSS', 'JavaScript'] },
+  { category: 'Backend & APIs', icon: <Settings size={16} />, skills: ['FastAPI', 'Node.js', 'Express.js'] },
+  { category: 'Databases', icon: <Database size={16} />, skills: ['MySQL', 'MongoDB'] },
+  { category: 'Tools & DevOps', icon: <Wrench size={16} />, skills: ['Git', 'Streamlit', 'NativeBase', 'LangChain', 'RAG'] },
 ];
 
 const bars = [
@@ -41,7 +42,7 @@ export default function Skills() {
               <motion.div key={gi} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: gi * 0.07 }}
                 className="card-light" style={{ padding: '22px 26px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-                  <span style={{ fontSize: '1.1rem' }}>{group.emoji}</span>
+                  <span style={{ color: '#5B0017', opacity: 0.75, flexShrink: 0 }}>{group.icon}</span>
                   <span style={{ fontSize: '0.68rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(91,0,23,0.70)', fontWeight: 600 }}>{group.category}</span>
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>

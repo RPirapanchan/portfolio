@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { GraduationCap, MapPin, Briefcase, Mail } from 'lucide-react';
 
 const stats = [
   { value: '4+', label: 'Projects Built' },
@@ -9,10 +10,10 @@ const stats = [
 ];
 
 const infoRows = [
-  ['🎓', 'University of Moratuwa'],
-  ['📍', 'Sri Lanka'],
-  ['💼', 'AI Engineer Intern @ Techorin'],
-  ['📧', 'pirapanchanraghavan@gmail.com'],
+  { icon: <GraduationCap size={15} />, text: 'University of Moratuwa' },
+  { icon: <MapPin size={15} />, text: 'Sri Lanka' },
+  { icon: <Briefcase size={15} />, text: 'AI Engineer Intern @ Techorin' },
+  { icon: <Mail size={15} />, text: 'pirapanchanraghavan@gmail.com' },
 ];
 
 export default function About() {
@@ -44,10 +45,10 @@ export default function About() {
               <h3 className="font-serif" style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1a0008', marginBottom: 6 }}>Raghavan Pirapanchan</h3>
               <p style={{ fontSize: '0.82rem', color: '#5B0017', marginBottom: 28, fontWeight: 500 }}>AI Engineer · Computer Vision · NLP</p>
 
-              {infoRows.map(([icon, text], i) => (
+              {infoRows.map((row, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12, textAlign: 'left' }}>
-                  <span style={{ fontSize: '1rem', flexShrink: 0 }}>{icon}</span>
-                  <span style={{ fontSize: '0.83rem', color: 'rgba(40,10,20,0.62)' }}>{text}</span>
+                  <span style={{ color: '#5B0017', flexShrink: 0, opacity: 0.75 }}>{row.icon}</span>
+                  <span style={{ fontSize: '0.83rem', color: 'rgba(40,10,20,0.62)' }}>{row.text}</span>
                 </div>
               ))}
 
