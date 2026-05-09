@@ -20,7 +20,7 @@ const education = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-beige" style={{ padding: '120px 0', position: 'relative' }}>
+    <section id="experience" style={{ padding: '120px 0', position: 'relative', background: '#E7DDD6' }}>
       <hr className="section-divider-light" style={{ position: 'absolute', top: 0, left: 0, right: 0 }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>

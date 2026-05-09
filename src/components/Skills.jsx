@@ -21,7 +21,7 @@ const bars = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-cream" style={{ padding: '120px 0', position: 'relative' }}>
+    <section id="skills" style={{ padding: '120px 0', position: 'relative', background: '#E7DDD6' }}>
       <hr className="section-divider-light" style={{ position: 'absolute', top: 0, left: 0, right: 0 }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>
