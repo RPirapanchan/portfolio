@@ -143,19 +143,19 @@ export default function Hero() {
                 padding: 2,
               }}
             />
-            {/* Glow */}
+            {/* Glow — Light Beige shadow */}
             <div style={{
               position: 'absolute',
               width: 300, height: 300,
               borderRadius: '50%',
-              boxShadow: '0 0 55px 18px rgba(91,0,23,0.50), 0 0 110px 35px rgba(91,0,23,0.22)',
+              boxShadow: '0 0 55px 22px rgba(231,221,214,0.55), 0 0 110px 45px rgba(231,221,214,0.25)',
             }} />
             {/* Photo circle */}
             <div className="hero-photo-wrap" style={{
               width: 300, height: 300,
               borderRadius: '50%',
               overflow: 'hidden',
-              border: '3px solid rgba(232,180,184,0.30)',
+              border: '3px solid rgba(231,221,214,0.55)',
               position: 'relative',
               background: 'linear-gradient(135deg, #1c0009, #0a0005)',
               zIndex: 1,

@@ -60,15 +60,25 @@ export default function Projects() {
                   {projects[current].tags.map(tag => <span key={tag} className="chip-light">{tag}</span>)}
                 </div>
               </div>
-              {/* Right visual */}
+              {/* Right visual — animated image */}
               <div className="carousel-visual" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <motion.div animate={{ rotate: [0, 2, -2, 0], scale: [1, 1.02, 1] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ width: 210, height: 210, borderRadius: 28, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: 'linear-gradient(135deg, #F5F1ED, #E7DDD6)',
-                    border: '1.5px solid rgba(91,0,23,0.20)',
-                    boxShadow: '0 20px 60px rgba(91,0,23,0.14)', color: '#5B0017',
-                  }}>
-                  {React.createElement(projects[current].icon, { size: 72, strokeWidth: 1.2 })}
+                <motion.div
+                  animate={{ y: [-6, 6, -6], scale: [1, 1.015, 1] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{
+                    borderRadius: 24,
+                    overflow: 'hidden',
+                    boxShadow: '0 20px 60px rgba(91,0,23,0.18)',
+                    border: '1.5px solid rgba(91,0,23,0.18)',
+                    maxWidth: 240,
+                    width: '100%',
+                  }}
+                >
+                  <img
+                    src="/anim.png"
+                    alt="Project Visual"
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
                 </motion.div>
               </div>
             </motion.div>
