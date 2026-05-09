@@ -189,11 +189,13 @@ body {
 .orb-burgundy { background: radial-gradient(circle, rgba(91,0,23,0.40) 0%, transparent 70%); }
 .orb-maroon   { background: radial-gradient(circle, rgba(112,0,32,0.35) 0%, transparent 70%); }
 
-/* ── Grid overlay (hero) ─────────────────────── */
+/* ── Dot grid overlay (hero) ─────────────────── */
 .grid-overlay {
-  position: absolute; inset: 0; opacity: 0.035; pointer-events: none;
-  background-image: linear-gradient(rgba(245,241,237,1) 1px, transparent 1px), linear-gradient(90deg, rgba(245,241,237,1) 1px, transparent 1px);
-  background-size: 60px 60px;
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(232,180,184,0.28) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
 }
 
 /* ── Floating cards (hero) ───────────────────── */
