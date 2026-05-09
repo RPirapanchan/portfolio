@@ -1,12 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, GitFork, Link2, ChevronDown } from 'lucide-react';
 
-const socials = [
-  { icon: <Mail size={18} />, href: 'mailto:pirapanchanraghavan@gmail.com', label: 'Email' },
-  { icon: <GitFork size={18} />, href: 'https://github.com/RaghavanPirapanchan', label: 'GitHub' },
-  { icon: <Link2 size={18} />, href: 'https://www.linkedin.com/in/raghavan-pirapanchan', label: 'LinkedIn' },
-];
 
 export default function Hero() {
   const ref = useRef(null);
@@ -131,51 +125,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* ── Social icons — fixed inside hero, NOT inside parallax div ── */}
-      <motion.div
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
-        style={{
-          position: 'absolute',
-          bottom: 80,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 14,
-          zIndex: 10,
-        }}
-      >
-        {socials.map((s, i) => (
-          <motion.a
-            key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-            whileHover={{ scale: 1.15, y: -4 }} whileTap={{ scale: 0.9 }}
-            className="social-icon"
-          >{s.icon}</motion.a>
-        ))}
-      </motion.div>
 
-      {/* ── Scroll hint — fixed at very bottom ── */}
-      <motion.div
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
-        style={{
-          position: 'absolute',
-          bottom: 24,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 4,
-          zIndex: 10,
-        }}
-      >
-        <span style={{ fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(245,241,237,0.22)' }}>Scroll</span>
-        <motion.div animate={{ y: [0, 7, 0] }} transition={{ duration: 1.5, repeat: Infinity }} style={{ color: 'rgba(91,0,23,0.6)' }}>
-          <ChevronDown size={18} />
-        </motion.div>
-      </motion.div>
 
       <style>{`
         @media (min-width: 1200px) { #fc1, #fc2 { display: block !important; } }
