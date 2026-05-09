@@ -61,7 +61,7 @@ export default function Projects() {
                 </div>
               </div>
               {/* Right visual */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="carousel-visual" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <motion.div animate={{ rotate: [0, 2, -2, 0], scale: [1, 1.02, 1] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                   style={{ width: 210, height: 210, borderRadius: 28, display: 'flex', alignItems: 'center', justifyContent: 'center',
                     background: 'linear-gradient(135deg, #F5F1ED, #E7DDD6)',

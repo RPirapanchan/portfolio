@@ -134,6 +134,7 @@ export default function Hero() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="hero-photo-ring"
               style={{
                 position: 'absolute',
                 width: 310, height: 310,
@@ -150,7 +151,7 @@ export default function Hero() {
               boxShadow: '0 0 55px 18px rgba(91,0,23,0.50), 0 0 110px 35px rgba(91,0,23,0.22)',
             }} />
             {/* Photo circle */}
-            <div style={{
+            <div className="hero-photo-wrap" style={{
               width: 300, height: 300,
               borderRadius: '50%',
               overflow: 'hidden',

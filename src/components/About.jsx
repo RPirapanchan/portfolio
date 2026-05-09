@@ -79,7 +79,7 @@ export default function About() {
 
             {/* Stats */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.36 }}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+              className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
               {stats.map((s, i) => (
                 <div key={i} className="stat-card-light">
                   <div className="stat-value-light">{s.value}</div>
