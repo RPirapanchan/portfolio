@@ -15,7 +15,7 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section id="home" ref={ref} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: 'linear-gradient(135deg, #0a0005 0%, #1c0009 45%, #0a0005 100%)' }}>
+    <section id="home" ref={ref} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, #0a0005 0%, #1c0009 45%, #0a0005 100%)' }}>
 
       {/* Orbs */}
       <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.18, 0.30, 0.18] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
@@ -44,7 +44,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Main content */}
-      <motion.div style={{ y, opacity, position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 24px', maxWidth: 860, margin: '0 auto' }}>
+      <motion.div style={{ y, opacity, position: 'relative', zIndex: 10, textAlign: 'center', padding: '120px 24px 100px', maxWidth: 860, margin: '0 auto', width: '100%' }}>
 
         {/* Eyebrow */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
