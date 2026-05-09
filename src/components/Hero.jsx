@@ -113,9 +113,9 @@ export default function Hero() {
         style={{ position: 'absolute', top: '18%', right: '5%', display: 'none' }}
         id="fc1"
       >
-        <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Currently</p>
-        <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>Final Year Research</p>
-        <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Temporal ViT Ergonomics</p>
+        <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Internship</p>
+        <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>AI Engineer Intern</p>
+        <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Techorin · 2025</p>
       </motion.div>
 
       <motion.div
