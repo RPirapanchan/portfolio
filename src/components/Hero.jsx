@@ -160,7 +160,7 @@ export default function Hero() {
               zIndex: 1,
             }}>
               <img
-                src="/profile.jpeg"
+                src="/profile.png"
                 alt="Raghavan Pirapanchan"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
               />
