@@ -319,13 +319,7 @@ export default function Hero() {
             <span className="gradient-text-accent">Pirapanchan</span>
           </motion.h1>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
-            style={{ maxWidth: 520, margin: '0 auto 36px', fontSize: '1rem', fontWeight: 300, color: 'rgba(245,241,237,0.55)', lineHeight: 1.82 }}>
-            Crafting intelligent systems at the intersection of{' '}
-            <span style={{ color: '#e8b4b8' }}>Computer Vision</span>,{' '}
-            <span style={{ color: '#e8b4b8' }}>Deep Learning</span>, and{' '}
-            <span style={{ color: '#e8b4b8' }}>Explainable AI</span>.
-          </motion.p>
+
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9 }}
             style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
