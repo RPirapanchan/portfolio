@@ -36,8 +36,8 @@ export default function Navbar() {
     >
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '18px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
-        <motion.a href="#home" whileHover={{ opacity: 0.8 }} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Logo" style={{ height: '40px', width: 'auto' }} />
+        <motion.a href="#home" whileHover={{ opacity: 0.8 }} style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.25rem', fontWeight: 700, letterSpacing: '0.22em', color: '#F5F1ED', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          R<span style={{ color: '#5B0017' }}>.</span>P
         </motion.a>
 
         {/* Desktop Links */}
