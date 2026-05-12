@@ -38,9 +38,20 @@ export default function About() {
           {/* Profile Card */}
           <motion.div initial={{ opacity: 0, x: -40 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7 }} style={{ position: 'relative' }}>
             <div className="card-light" style={{ padding: 44, textAlign: 'center' }}>
-              {/* Avatar */}
-              <div style={{ width: 110, height: 110, borderRadius: '50%', margin: '0 auto 24px', background: 'linear-gradient(135deg, #5B0017, #700020)', boxShadow: '0 12px 50px rgba(91,0,23,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Playfair Display', serif", fontSize: '2.5rem', fontWeight: 700, color: '#F5F1ED' }}>
-                RP
+              {/* Profile Photo */}
+              <div style={{
+                width: 110, height: 110, borderRadius: '50%',
+                margin: '0 auto 24px',
+                overflow: 'hidden',
+                border: '3px solid rgba(91,0,23,0.30)',
+                boxShadow: '0 12px 50px rgba(91,0,23,0.35)',
+                background: 'linear-gradient(135deg, #1c0009, #0a0005)',
+              }}>
+                <img
+                  src="/profile.png"
+                  alt="Raghavan Pirapanchan"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                />
               </div>
               <h3 className="font-serif" style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1a0008', marginBottom: 6 }}>Raghavan Pirapanchan</h3>
               <p style={{ fontSize: '0.82rem', color: '#5B0017', marginBottom: 28, fontWeight: 500 }}>AI Engineer</p>
