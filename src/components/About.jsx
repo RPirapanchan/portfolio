@@ -43,7 +43,7 @@ export default function About() {
                 RP
               </div>
               <h3 className="font-serif" style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1a0008', marginBottom: 6 }}>Raghavan Pirapanchan</h3>
-              <p style={{ fontSize: '0.82rem', color: '#5B0017', marginBottom: 28, fontWeight: 500 }}>AI Engineer · Computer Vision · NLP</p>
+              <p style={{ fontSize: '0.82rem', color: '#5B0017', marginBottom: 28, fontWeight: 500 }}>AI Engineer</p>
 
               {infoRows.map((row, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12, textAlign: 'left' }}>
@@ -74,7 +74,7 @@ export default function About() {
 
             <motion.p initial={{ opacity: 0, x: 30 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.7, delay: 0.24 }}
               style={{ fontSize: '0.95rem', lineHeight: 1.85, color: 'rgba(40,10,20,0.62)', marginBottom: 36 }}>
-              My research focuses on <span style={{ color: '#5B0017', fontWeight: 600 }}>Temporal Vision Transformers</span> for ergonomic risk prediction — combining Computer Vision, Explainable AI, and Fuzzy Inference Systems to make workplaces safer.
+              My research focuses on <span style={{ color: '#5B0017', fontWeight: 600 }}>Temporal Vision Transformers</span> for ergonomic risk prediction combining Computer Vision, Explainable AI, and Fuzzy Inference Systems to make workplaces safer.
             </motion.p>
 
             {/* Stats */}
