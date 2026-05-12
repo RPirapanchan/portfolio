@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-/* ── Particles: fewer for better scroll performance ── */
-const particles = Array.from({ length: 20 }, (_, i) => ({
+/* ── Particles: 80 for rich starfield ── */
+const particles = Array.from({ length: 80 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
