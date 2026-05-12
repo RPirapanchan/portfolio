@@ -37,7 +37,7 @@ export default function Navbar() {
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '18px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
         <motion.a href="#home" whileHover={{ opacity: 0.8 }} style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/logo.png" alt="Logo" style={{ height: '40px', width: 'auto' }} />
+          <img src="/logo.png" alt="Logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
         </motion.a>
 
         {/* Desktop Links */}
