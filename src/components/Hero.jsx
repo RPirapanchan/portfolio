@@ -46,116 +46,106 @@ function PhotoPortal({ onClose }) {
       style={{
         position: 'fixed', inset: 0, zIndex: 300,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        backdropFilter: 'blur(32px)',
-        WebkitBackdropFilter: 'blur(32px)',
-        background: 'rgba(10,0,5,0.75)',
+        backdropFilter: 'blur(30px)',
+        WebkitBackdropFilter: 'blur(30px)',
+        background: 'rgba(8,0,4,0.82)',
         cursor: 'zoom-out',
-        padding: '24px',
       }}
     >
-      {/* Close hint */}
-      <motion.p
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+      {/* ── X Close button (top-right, always visible) ── */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.4 }}
+        onClick={onClose}
+        whileHover={{ scale: 1.12, rotate: 90 }}
+        whileTap={{ scale: 0.9 }}
         style={{
-          position: 'absolute', top: 24, left: '50%', transform: 'translateX(-50%)',
-          fontSize: '0.60rem', letterSpacing: '0.28em', textTransform: 'uppercase',
-          color: 'rgba(232,180,184,0.40)', whiteSpace: 'nowrap', zIndex: 10,
+          position: 'absolute', top: 24, right: 28, zIndex: 20,
+          width: 40, height: 40, borderRadius: '50%', cursor: 'pointer',
+          background: 'rgba(91,0,23,0.35)',
+          border: '1px solid rgba(232,180,184,0.30)',
+          color: 'rgba(232,180,184,0.85)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backdropFilter: 'blur(8px)', outline: 'none',
+          transition: 'background 0.2s',
         }}
       >
-        ESC or click to close
-      </motion.p>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1l12 12M13 1L1 13" stroke="rgba(232,180,184,0.9)" strokeWidth="1.8" strokeLinecap="round"/>
+        </svg>
+      </motion.button>
 
-      {/* ── Card ── */}
+      {/* ── Luxury card ── */}
       <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.92 }}
+        initial={{ opacity: 0, y: 48, scale: 0.88 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 30, scale: 0.92 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 22 }}
+        exit={{ opacity: 0, y: 36, scale: 0.88 }}
+        transition={{ type: 'spring', stiffness: 190, damping: 20 }}
         onClick={(e) => e.stopPropagation()}
-        style={{
-          cursor: 'default',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 32,
-          maxWidth: 420,
-          width: '100%',
-        }}
+        style={{ cursor: 'default', position: 'relative' }}
       >
-        {/* Photo with elegant frame */}
-        <div style={{ position: 'relative', width: '100%', maxWidth: 360 }}>
-          {/* Glow behind */}
-          <div style={{
-            position: 'absolute', inset: -20, borderRadius: 28,
-            background: 'radial-gradient(ellipse, rgba(91,0,23,0.55) 0%, transparent 70%)',
-            filter: 'blur(16px)',
-          }} />
-
-          {/* Photo frame — rounded rectangle */}
-          <motion.div
-            initial={{ clipPath: 'inset(50% 50% 50% 50% round 24px)' }}
-            animate={{ clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            style={{
-              width: '100%',
-              aspectRatio: '3/4',
-              borderRadius: 24,
-              overflow: 'hidden',
-              border: '1.5px solid rgba(232,180,184,0.30)',
-              boxShadow: '0 32px 80px rgba(91,0,23,0.50), 0 0 0 1px rgba(232,180,184,0.08)',
-              position: 'relative',
-            }}
-          >
-            <img
-              src="/profile.png"
-              alt="Raghavan Pirapanchan"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
-            />
-            {/* Subtle vignette bottom */}
-            <div style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
-              background: 'linear-gradient(to top, rgba(10,0,5,0.65), transparent)',
-            }} />
-          </motion.div>
-
-          {/* Corner accent lines */}
-          {[
-            { top: -6, left: -6, borderTop: '2px solid rgba(232,180,184,0.6)', borderLeft: '2px solid rgba(232,180,184,0.6)', borderRadius: '4px 0 0 0' },
-            { top: -6, right: -6, borderTop: '2px solid rgba(232,180,184,0.6)', borderRight: '2px solid rgba(232,180,184,0.6)', borderRadius: '0 4px 0 0' },
-            { bottom: -6, left: -6, borderBottom: '2px solid rgba(232,180,184,0.6)', borderLeft: '2px solid rgba(232,180,184,0.6)', borderRadius: '0 0 0 4px' },
-            { bottom: -6, right: -6, borderBottom: '2px solid rgba(232,180,184,0.6)', borderRight: '2px solid rgba(232,180,184,0.6)', borderRadius: '0 0 4px 0' },
-          ].map((style, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 + i * 0.06, duration: 0.3 }}
-              style={{ position: 'absolute', width: 20, height: 20, ...style }}
-            />
-          ))}
-        </div>
-
-        {/* Info */}
+        {/* Shimmer animated border wrapper */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.42, duration: 0.5 }}
-          style={{ textAlign: 'center', width: '100%' }}
+          animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+          style={{
+            padding: 2,
+            borderRadius: 28,
+            background: 'linear-gradient(120deg, rgba(91,0,23,0.6) 0%, rgba(232,180,184,0.85) 30%, rgba(255,220,200,0.9) 50%, rgba(232,180,184,0.85) 70%, rgba(91,0,23,0.6) 100%)',
+            backgroundSize: '300% 300%',
+            boxShadow: '0 0 60px rgba(91,0,23,0.55), 0 24px 80px rgba(0,0,0,0.6)',
+          }}
         >
-          <p className="font-serif" style={{ fontSize: '1.5rem', fontWeight: 700, color: '#F5F1ED', letterSpacing: '0.03em', marginBottom: 10 }}>
-            Raghavan Pirapanchan
-          </p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 8 }}>
-            <span style={{ height: 1, width: 28, background: 'linear-gradient(90deg, transparent, rgba(232,180,184,0.55))' }} />
-            <span style={{ fontSize: '0.68rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(232,180,184,0.75)' }}>
-              AI Engineer · Researcher
-            </span>
-            <span style={{ height: 1, width: 28, background: 'linear-gradient(90deg, rgba(232,180,184,0.55), transparent)' }} />
+          {/* Card inner */}
+          <div style={{
+            borderRadius: 26,
+            overflow: 'hidden',
+            width: 'clamp(260px, 28vw, 360px)',
+            background: 'linear-gradient(160deg, rgba(28,0,9,0.97) 0%, rgba(12,0,6,0.99) 100%)',
+            position: 'relative',
+          }}>
+            {/* Photo */}
+            <motion.div
+              initial={{ scale: 1.08 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              style={{ width: '100%', aspectRatio: '3/4', overflow: 'hidden', position: 'relative' }}
+            >
+              <img
+                src="/profile.png"
+                alt="Raghavan Pirapanchan"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
+              />
+
+              {/* Bottom gradient for text overlay */}
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0, height: '55%',
+                background: 'linear-gradient(to top, rgba(8,0,4,0.98) 10%, rgba(8,0,4,0.7) 55%, transparent 100%)',
+              }} />
+
+              {/* Name & title overlaid on photo bottom */}
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.38, duration: 0.5 }}
+                style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '0 24px 24px' }}
+              >
+                <p className="font-serif" style={{ fontSize: '1.35rem', fontWeight: 700, color: '#F5F1ED', marginBottom: 6, letterSpacing: '0.02em' }}>
+                  Raghavan Pirapanchan
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                  <div style={{ height: 1, flex: 1, background: 'linear-gradient(90deg, rgba(232,180,184,0.6), transparent)' }} />
+                  <span style={{ fontSize: '0.62rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: 'rgba(232,180,184,0.75)', whiteSpace: 'nowrap' }}>
+                    AI Engineer
+                  </span>
+                </div>
+                <p style={{ fontSize: '0.60rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(245,241,237,0.30)' }}>
+                  University of Moratuwa · 2026
+                </p>
+              </motion.div>
+            </motion.div>
           </div>
-          <p style={{ fontSize: '0.63rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(245,241,237,0.28)' }}>
-            University of Moratuwa · 2026
-          </p>
         </motion.div>
       </motion.div>
     </motion.div>
