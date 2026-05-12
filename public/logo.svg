@@ -1,13 +1,64 @@
-<svg width="120" height="60" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+<svg width="160" height="80" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="roseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#e8b4b8;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#f5f1ed;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#e8b4b8;stop-opacity:1" />
+    <!-- Rose gold shimmer gradient -->
+    <linearGradient id="roseGold" x1="0%" y1="0%" x2="100%" y2="120%">
+      <stop offset="0%"   stop-color="#c9a27c"/>
+      <stop offset="35%"  stop-color="#f5dfc9"/>
+      <stop offset="65%"  stop-color="#e8b4b8"/>
+      <stop offset="100%" stop-color="#b07a5a"/>
     </linearGradient>
+
+    <!-- Darker accent for depth -->
+    <linearGradient id="deepAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#5B0017" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#8B0028" stop-opacity="0.7"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Google Fonts import -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;display=swap');
+    </style>
   </defs>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" 
-        style="font-family:'Playfair Display', serif; font-size:48px; font-weight:700; fill:url(#roseGradient); letter-spacing:0.05em;">
-    RP
-  </text>
+
+  <!-- Shadow/depth layer -->
+  <text x="43" y="60"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="64" font-weight="700"
+        fill="url(#deepAccent)"
+        transform="translate(2,2)">R</text>
+  <text x="78" y="60"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="64" font-weight="700"
+        fill="url(#deepAccent)"
+        transform="translate(2,2)">P</text>
+
+  <!-- Main letters with rose gold gradient and glow -->
+  <text x="41" y="58"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="64" font-weight="700"
+        fill="url(#roseGold)"
+        filter="url(#glow)"
+        letter-spacing="-2">R</text>
+  <text x="76" y="58"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="64" font-weight="700"
+        fill="url(#roseGold)"
+        filter="url(#glow)"
+        letter-spacing="-2">P</text>
+
+  <!-- Decorative underline — left segment -->
+  <line x1="18" y1="68" x2="60" y2="68" stroke="#e8b4b8" stroke-width="0.7" stroke-opacity="0.55"/>
+  <!-- Decorative center dot -->
+  <circle cx="80" cy="68" r="1.8" fill="#e8b4b8" fill-opacity="0.85"/>
+  <!-- Decorative underline — right segment -->
+  <line x1="100" y1="68" x2="142" y2="68" stroke="#e8b4b8" stroke-width="0.7" stroke-opacity="0.55"/>
 </svg>
