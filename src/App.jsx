@@ -64,7 +64,6 @@ function Loader({ done }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 1400);
@@ -75,15 +74,8 @@ export default function App() {
     <>
       <Loader done={loaded} />
       <CursorGlow />
-      <div
-        style={{
-          minHeight: '100vh',
-          background: darkMode ? '#0a0005' : '#F5F1ED',
-          color: darkMode ? '#F5F1ED' : '#1a0008',
-          transition: 'background 0.5s ease, color 0.5s ease',
-        }}
-      >
-        <Navbar darkMode={darkMode} toggleDark={() => setDarkMode(!darkMode)} />
+      <div style={{ minHeight: '100vh', background: '#0a0005', color: '#F5F1ED' }}>
+        <Navbar />
         <main>
           <Hero />
           <About />

@@ -8,6 +8,9 @@ body {
   background: #0a0005;
   color: #F5F1ED;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 ::-webkit-scrollbar { width: 4px; }

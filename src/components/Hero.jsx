@@ -1,17 +1,17 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-/* ── Floating particles ─────────────────────────── */
-const particles = Array.from({ length: 45 }, (_, i) => ({
+/* ── Particles: fewer for better scroll performance ── */
+const particles = Array.from({ length: 20 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
   size: Math.random() * 2.5 + 0.8,
-  duration: Math.random() * 12 + 8,
-  delay: Math.random() * 6,
-  opacity: Math.random() * 0.40 + 0.10,
-  xDrift: (Math.random() - 0.5) * 55,
-  yDrift: (Math.random() - 0.5) * 55,
+  duration: Math.random() * 10 + 10,
+  delay: Math.random() * 5,
+  opacity: Math.random() * 0.35 + 0.10,
+  xDrift: (Math.random() - 0.5) * 35,
+  yDrift: (Math.random() - 0.5) * 35,
 }));
 
 export default function Hero() {
@@ -44,11 +44,12 @@ export default function Hero() {
       {/* ── Particles ── */}
       {particles.map((p) => (
         <motion.div key={p.id}
-          animate={{ x: [0, p.xDrift, 0], y: [0, p.yDrift, 0], opacity: [p.opacity * 0.4, p.opacity, p.opacity * 0.4], scale: [0.8, 1.2, 0.8] }}
+          animate={{ x: [0, p.xDrift, 0], y: [0, p.yDrift, 0], opacity: [p.opacity * 0.4, p.opacity, p.opacity * 0.4] }}
           transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
           style={{
             position: 'absolute', left: `${p.x}%`, top: `${p.y}%`,
             width: p.size, height: p.size, borderRadius: '50%', pointerEvents: 'none',
+            willChange: 'transform, opacity',
             background: p.id % 3 === 0 ? 'rgba(232,180,184,0.9)' : p.id % 3 === 1 ? 'rgba(180,0,50,0.7)' : 'rgba(245,241,237,0.6)',
             boxShadow: `0 0 ${p.size * 3}px ${p.size}px ${p.id % 3 === 0 ? 'rgba(232,180,184,0.3)' : 'rgba(91,0,23,0.3)'}`,
           }}

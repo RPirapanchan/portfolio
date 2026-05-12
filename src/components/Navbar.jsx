@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export default function Navbar({ darkMode, toggleDark }) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -54,10 +54,6 @@ export default function Navbar({ darkMode, toggleDark }) {
 
         {/* Right */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <motion.button onClick={toggleDark} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-            style={{ width: 38, height: 38, borderRadius: '50%', border: '1px solid rgba(91,0,23,0.45)', background: 'rgba(91,0,23,0.22)', color: '#F5F1ED', cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >{darkMode ? '☀' : '🌙'}</motion.button>
-
           <motion.a href="/R_Pirapanchan (2).pdf" target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn-primary hide-mobile" style={{ padding: '10px 24px' }}>
             Resume
           </motion.a>
