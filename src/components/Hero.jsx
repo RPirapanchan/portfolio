@@ -203,7 +203,7 @@ export default function Hero() {
           <rect width="100%" height="100%" fill="url(#diag)" />
         </svg>
 
-        {/* ── Floating cards — LEFT side only to avoid portal overlap ── */}
+        {/* ── Floating cards ── */}
         <motion.div animate={{ y: [-8, 8, -8], rotate: [-1, 1, -1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           className="floating-card" style={{ position: 'absolute', top: '18%', left: '4%', display: 'none' }} id="fc2">
           <p className="eyebrow-dark" style={{ marginBottom: 6 }}>University</p>
@@ -212,7 +212,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div animate={{ y: [8, -8, 8], rotate: [1, -1, 1] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="floating-card" style={{ position: 'absolute', bottom: '20%', left: '4%', display: 'none' }} id="fc1">
+          className="floating-card" style={{ position: 'absolute', top: '42%', right: '4%', display: 'none' }} id="fc1">
           <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Internship</p>
           <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>AI Engineer Intern</p>
           <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Techorin · 2025</p>
@@ -322,7 +322,7 @@ export default function Hero() {
 
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center' }}>
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', marginTop: '48px' }}>
             <a href="#projects" className="btn-primary">View Projects</a>
             <a href="#contact" className="btn-secondary">Contact Me</a>
           </motion.div>
