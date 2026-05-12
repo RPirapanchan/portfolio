@@ -41,158 +41,119 @@ function PhotoPortal({ onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.35 }}
       onClick={onClose}
       style={{
         position: 'fixed', inset: 0, zIndex: 300,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        backdropFilter: 'blur(28px)',
-        WebkitBackdropFilter: 'blur(28px)',
-        background: 'radial-gradient(ellipse at center, rgba(91,0,23,0.35) 0%, rgba(10,0,5,0.80) 100%)',
+        backdropFilter: 'blur(32px)',
+        WebkitBackdropFilter: 'blur(32px)',
+        background: 'rgba(10,0,5,0.75)',
         cursor: 'zoom-out',
+        padding: '24px',
       }}
     >
-      {/* Scanline texture overlay */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0,
-        backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px)',
-      }} />
-
       {/* Close hint */}
       <motion.p
-        initial={{ opacity: 0, y: -16 }}
+        initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ delay: 0.6, duration: 0.4 }}
+        transition={{ delay: 0.5 }}
         style={{
-          position: 'absolute', top: 28, left: '50%', transform: 'translateX(-50%)',
-          fontSize: '0.63rem', letterSpacing: '0.3em',
-          textTransform: 'uppercase', color: 'rgba(232,180,184,0.45)',
-          zIndex: 10, whiteSpace: 'nowrap',
+          position: 'absolute', top: 24, left: '50%', transform: 'translateX(-50%)',
+          fontSize: '0.60rem', letterSpacing: '0.28em', textTransform: 'uppercase',
+          color: 'rgba(232,180,184,0.40)', whiteSpace: 'nowrap', zIndex: 10,
         }}
       >
-        Press ESC or click to close
+        ESC or click to close
       </motion.p>
 
-      {/* ── Main portal content ── */}
+      {/* ── Card ── */}
       <motion.div
-        initial={{ scale: 0.3, opacity: 0, filter: 'blur(20px)' }}
-        animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-        exit={{ scale: 0.3, opacity: 0, filter: 'blur(20px)' }}
-        transition={{ type: 'spring', stiffness: 180, damping: 20, duration: 0.6 }}
+        initial={{ opacity: 0, y: 40, scale: 0.92 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 30, scale: 0.92 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 22 }}
         onClick={(e) => e.stopPropagation()}
-        style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'default', zIndex: 10 }}
+        style={{
+          cursor: 'default',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 32,
+          maxWidth: 420,
+          width: '100%',
+        }}
       >
-        {/* Burst particles */}
-        {burstDots.map((dot, i) => {
-          const rad = (dot.angle * Math.PI) / 180;
-          return (
-            <motion.div key={i}
-              initial={{ x: 0, y: 0, opacity: 0, scale: 0 }}
-              animate={{ x: Math.cos(rad) * dot.dist, y: Math.sin(rad) * dot.dist, opacity: [0, 0.8, 0], scale: [0, 1, 0] }}
-              transition={{ duration: 1.0, delay: 0.1 + i * 0.03, ease: 'easeOut' }}
-              style={{
-                position: 'absolute', top: '50%', left: '50%',
-                width: dot.size, height: dot.size, borderRadius: '50%',
-                background: i % 2 === 0 ? 'rgba(232,180,184,0.9)' : 'rgba(91,0,23,0.9)',
-                pointerEvents: 'none', zIndex: 5,
-                marginLeft: -dot.size / 2, marginTop: -dot.size / 2,
-              }}
+        {/* Photo with elegant frame */}
+        <div style={{ position: 'relative', width: '100%', maxWidth: 360 }}>
+          {/* Glow behind */}
+          <div style={{
+            position: 'absolute', inset: -20, borderRadius: 28,
+            background: 'radial-gradient(ellipse, rgba(91,0,23,0.55) 0%, transparent 70%)',
+            filter: 'blur(16px)',
+          }} />
+
+          {/* Photo frame — rounded rectangle */}
+          <motion.div
+            initial={{ clipPath: 'inset(50% 50% 50% 50% round 24px)' }}
+            animate={{ clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            style={{
+              width: '100%',
+              aspectRatio: '3/4',
+              borderRadius: 24,
+              overflow: 'hidden',
+              border: '1.5px solid rgba(232,180,184,0.30)',
+              boxShadow: '0 32px 80px rgba(91,0,23,0.50), 0 0 0 1px rgba(232,180,184,0.08)',
+              position: 'relative',
+            }}
+          >
+            <img
+              src="/profile.png"
+              alt="Raghavan Pirapanchan"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
             />
-          );
-        })}
+            {/* Subtle vignette bottom */}
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0, height: '35%',
+              background: 'linear-gradient(to top, rgba(10,0,5,0.65), transparent)',
+            }} />
+          </motion.div>
 
-        {/* Outer slow ring */}
-        <motion.div
-          initial={{ rotate: 0, opacity: 0, scale: 0.4 }}
-          animate={{ rotate: 360, opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.4 }}
-          transition={{ rotate: { duration: 14, repeat: Infinity, ease: 'linear' }, opacity: { duration: 0.5, delay: 0.2 }, scale: { duration: 0.5, delay: 0.2 } }}
-          style={{
-            position: 'absolute',
-            width: 'clamp(300px, 42vw, 490px)',
-            height: 'clamp(300px, 42vw, 490px)',
-            borderRadius: '50%',
-            border: '1px dashed rgba(232,180,184,0.25)',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
+          {/* Corner accent lines */}
+          {[
+            { top: -6, left: -6, borderTop: '2px solid rgba(232,180,184,0.6)', borderLeft: '2px solid rgba(232,180,184,0.6)', borderRadius: '4px 0 0 0' },
+            { top: -6, right: -6, borderTop: '2px solid rgba(232,180,184,0.6)', borderRight: '2px solid rgba(232,180,184,0.6)', borderRadius: '0 4px 0 0' },
+            { bottom: -6, left: -6, borderBottom: '2px solid rgba(232,180,184,0.6)', borderLeft: '2px solid rgba(232,180,184,0.6)', borderRadius: '0 0 0 4px' },
+            { bottom: -6, right: -6, borderBottom: '2px solid rgba(232,180,184,0.6)', borderRight: '2px solid rgba(232,180,184,0.6)', borderRadius: '0 0 4px 0' },
+          ].map((style, i) => (
+            <motion.div key={i}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5 + i * 0.06, duration: 0.3 }}
+              style={{ position: 'absolute', width: 20, height: 20, ...style }}
+            />
+          ))}
+        </div>
 
-        {/* Inner fast ring (conic) */}
+        {/* Info */}
         <motion.div
-          initial={{ rotate: 0, opacity: 0, scale: 0.4 }}
-          animate={{ rotate: -360, opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.4 }}
-          transition={{ rotate: { duration: 9, repeat: Infinity, ease: 'linear' }, opacity: { duration: 0.4, delay: 0.15 }, scale: { duration: 0.4, delay: 0.15 } }}
-          style={{
-            position: 'absolute',
-            width: 'clamp(272px, 38vw, 450px)',
-            height: 'clamp(272px, 38vw, 450px)',
-            borderRadius: '50%',
-            background: 'conic-gradient(from 0deg, rgba(91,0,23,0.0) 0%, rgba(232,180,184,0.80) 25%, rgba(91,0,23,0.9) 55%, rgba(232,180,184,0.80) 80%, rgba(91,0,23,0.0) 100%)',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-
-        {/* Glow */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.3 }}
-          style={{
-            position: 'absolute',
-            width: 'clamp(260px, 36vw, 420px)',
-            height: 'clamp(260px, 36vw, 420px)',
-            borderRadius: '50%',
-            boxShadow: '0 0 90px 35px rgba(91,0,23,0.60), 0 0 180px 70px rgba(91,0,23,0.22)',
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-
-        {/* Photo frame */}
-        <motion.div
-          initial={{ scale: 0.6, rotate: -8 }}
-          animate={{ scale: 1, rotate: 0 }}
-          exit={{ scale: 0.6, rotate: 8 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 18, delay: 0.08 }}
-          style={{
-            width: 'clamp(256px, 35vw, 410px)',
-            height: 'clamp(256px, 35vw, 410px)',
-            borderRadius: '50%', overflow: 'hidden',
-            border: '4px solid rgba(232,180,184,0.45)',
-            position: 'relative', zIndex: 2,
-            boxShadow: 'inset 0 0 40px rgba(91,0,23,0.3)',
-          }}
-        >
-          <img
-            src="/profile.png"
-            alt="Raghavan Pirapanchan"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
-          />
-        </motion.div>
-
-        {/* Name */}
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 16 }}
-          transition={{ delay: 0.45, duration: 0.5 }}
-          style={{ textAlign: 'center', marginTop: 28, zIndex: 10 }}
+          transition={{ delay: 0.42, duration: 0.5 }}
+          style={{ textAlign: 'center', width: '100%' }}
         >
-          <p className="font-serif" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.45rem)', fontWeight: 700, color: '#F5F1ED', letterSpacing: '0.05em', marginBottom: 8 }}>
+          <p className="font-serif" style={{ fontSize: '1.5rem', fontWeight: 700, color: '#F5F1ED', letterSpacing: '0.03em', marginBottom: 10 }}>
             Raghavan Pirapanchan
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 6 }}>
-            <span style={{ height: 1, width: 30, background: 'linear-gradient(90deg, transparent, rgba(232,180,184,0.6))' }} />
-            <p style={{ fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(232,180,184,0.70)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 8 }}>
+            <span style={{ height: 1, width: 28, background: 'linear-gradient(90deg, transparent, rgba(232,180,184,0.55))' }} />
+            <span style={{ fontSize: '0.68rem', letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(232,180,184,0.75)' }}>
               AI Engineer · Researcher
-            </p>
-            <span style={{ height: 1, width: 30, background: 'linear-gradient(90deg, rgba(232,180,184,0.6), transparent)' }} />
+            </span>
+            <span style={{ height: 1, width: 28, background: 'linear-gradient(90deg, rgba(232,180,184,0.55), transparent)' }} />
           </div>
-          <p style={{ fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(245,241,237,0.28)' }}>
+          <p style={{ fontSize: '0.63rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(245,241,237,0.28)' }}>
             University of Moratuwa · 2026
           </p>
         </motion.div>
