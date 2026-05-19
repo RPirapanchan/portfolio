@@ -205,17 +205,41 @@ export default function Hero() {
 
         {/* ── Floating cards ── */}
         <motion.div animate={{ y: [-8, 8, -8], rotate: [-1, 1, -1] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="floating-card" style={{ position: 'absolute', top: '18%', left: '4%', display: 'none' }} id="fc2">
+          className="floating-card" style={{ position: 'absolute', top: '18%', left: '2%', display: 'none' }} id="fc2">
           <p className="eyebrow-dark" style={{ marginBottom: 6 }}>University</p>
           <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>Moratuwa, Sri Lanka</p>
           <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>BSc Hons in AI · 2026</p>
         </motion.div>
 
         <motion.div animate={{ y: [8, -8, 8], rotate: [1, -1, 1] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="floating-card" style={{ position: 'absolute', top: '42%', right: '4%', display: 'none' }} id="fc1">
+          className="floating-card" style={{ position: 'absolute', top: '42%', right: '2%', display: 'none' }} id="fc1">
           <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Internship</p>
           <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>AI Engineer Intern</p>
           <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Techorin · 2025</p>
+        </motion.div>
+
+        {/* Location card — bottom LEFT */}
+        <motion.div animate={{ y: [-6, 6, -6], rotate: [-0.8, 0.8, -0.8] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+          className="floating-card" style={{ position: 'absolute', bottom: '18%', left: '6%', display: 'none' }} id="fc3">
+          <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Location</p>
+          <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>Colombo, Sri Lanka</p>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Open to Onsite &amp; Remote</p>
+        </motion.div>
+
+        {/* Top Skills card — top right */}
+        <motion.div animate={{ y: [-7, 7, -7], rotate: [1, -1, 1] }} transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+          className="floating-card" style={{ position: 'absolute', top: '16%', right: '5%', display: 'none' }} id="fc4">
+          <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Top Skills</p>
+          <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>Python · TensorFlow</p>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>React · MediaPipe · OpenCV</p>
+        </motion.div>
+
+        {/* Research Focus card — LEFT, below University */}
+        <motion.div animate={{ y: [6, -6, 6], rotate: [-1, 1, -1] }} transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          className="floating-card" style={{ position: 'absolute', top: '38%', left: '8%', display: 'none' }} id="fc5">
+          <p className="eyebrow-dark" style={{ marginBottom: 6 }}>Research Focus</p>
+          <p style={{ fontWeight: 600, color: '#F5F1ED', fontSize: '0.875rem' }}>Computer Vision &amp; XAI</p>
+          <p style={{ fontSize: '0.75rem', color: 'rgba(232,180,184,0.85)', marginTop: 4 }}>Temporal ViT · Pose Estimation</p>
         </motion.div>
 
         {/* ══════════════════════════════════════════
@@ -304,7 +328,7 @@ export default function Hero() {
         </motion.div>
 
         {/* ── Centered Text ── */}
-        <motion.div style={{ y, opacity, position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 24px', maxWidth: 860, width: '100%' }}>
+        <motion.div style={{ y, opacity, position: 'relative', zIndex: 10, textAlign: 'center', padding: '0 24px', maxWidth: 860, width: '100%', marginTop: '-15vh' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ height: 1, width: 44, background: 'linear-gradient(90deg, transparent, rgba(232,180,184,0.7))' }} />
@@ -329,7 +353,7 @@ export default function Hero() {
         </motion.div>
 
         <style>{`
-          @media (min-width: 1200px) { #fc1, #fc2 { display: block !important; } }
+          @media (min-width: 1200px) { #fc1, #fc2, #fc3, #fc4, #fc5 { display: block !important; } }
         `}</style>
       </section>
     </>
